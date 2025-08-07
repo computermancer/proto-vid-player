@@ -26,8 +26,8 @@
   z-index: 50;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 1rem;
+  align-items: flex-start; /* Changed from center to flex-start */
+  padding: 5vh 1rem 1rem; /* Added top padding to push content down from the very top */
   overflow-y: auto;
 }
 
