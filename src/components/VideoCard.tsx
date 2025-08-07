@@ -91,55 +91,29 @@ const VideoCard = ({ title, videoId }: VideoCardProps) => {
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         contentLabel={`Video: ${title}`}
-        style={{
-          overlay: {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 50,
-            padding: '1rem',
-            overflowY: 'auto',
-          },
-          content: {
-            position: 'static',
-            inset: 'auto',
-            border: 'none',
-            background: 'transparent',
-            overflow: 'visible',
-            WebkitOverflowScrolling: 'touch',
-            width: '100%',
-            maxWidth: 'min(95vw, 1200px)',
-            padding: 0,
-            margin: '1rem auto',
-            display: 'flex',
-            flexDirection: 'column',
-          }
-        }}
-        ariaHideApp={false}
+        className="modal-content"
+        overlayClassName="modal-overlay"
         closeTimeoutMS={200}
+        ariaHideApp={false}
       >
-        <div className="w-full bg-white rounded-xl overflow-hidden shadow-2xl transform transition-all">
+        <div className="w-full max-w-4xl mx-auto bg-white rounded-xl overflow-hidden shadow-2xl">
           <div className="p-3 sm:p-4 border-b">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 line-clamp-2">{title}</h2>
           </div>
           <div className="relative" style={{ paddingBottom: '56.25%' }}>
-            <iframe
-              width="100%"
-              height="100%"
-              src={`${embedUrl}?autoplay=1&rel=0`}
-              title={title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="absolute top-0 left-0 w-full h-full"
-              loading="lazy"
-              style={{ border: 'none' }}
-            />
+            <div className="absolute inset-0">
+              <iframe
+                width="100%"
+                height="100%"
+                src={`${embedUrl}?autoplay=1&rel=0`}
+                title={title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+                loading="lazy"
+                style={{ border: 'none' }}
+              />
+            </div>
           </div>
           <div className="p-3 sm:p-4 flex justify-end border-t">
             <button

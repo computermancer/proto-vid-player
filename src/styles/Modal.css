@@ -1,34 +1,40 @@
+/* Modal overlay styles */
 .ReactModal__Overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.75) !important;
-  z-index: 1000;
-  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
 }
 
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+/* Modal content styles */
 .ReactModal__Content {
-  position: fixed !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  width: 90% !important;
-  max-width: 900px !important;
-  max-height: 90vh !important;
-  overflow-y: auto !important;
-  outline: none !important;
-  border: none !important;
-  background: transparent !important;
-  padding: 0 !important;
-  inset: auto !important;
-  right: auto !important;
-  bottom: auto !important;
+  position: relative;
+  inset: auto;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 1rem;
+  width: 100%;
+  max-width: min(95vw, 1200px);
+  outline: none;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .ReactModal__Content {
-    width: 95% !important;
+    margin: 0.5rem;
+    max-width: 98vw;
   }
 }
